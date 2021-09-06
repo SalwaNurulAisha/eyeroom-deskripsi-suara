@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deskripsi Audio</title>
+	<style>
+		button {
+			border: none;
+			width: 32px;
+			height: 32px;
+			cursor: pointer;
+			outline: none;
+		}
+		#play {
+			background-image: url(./image/mute.png);
+		}
+
+	</style>
+</head>
+<body>
+    <button id="play"> </button>
+
+    <script>
+        var musik = new Audio();
+        musik.src = "audio/musik.mp3"
+        musik.loop = true;
+        musik.play();
+
+		function mulaiAudio(){
+			var play=document.getElementById("play");
+
+			play.addEventListener('click', fplay);
+
+			function fplay(){
+				if(musik.paused) {
+					musik.play();
+					play.style.background="url(./image/unmute.png)";
+				}else {
+					musik.pause();
+					play.style.background="url(./image/mute.png)";
+				}
+			}
+		}
+		window.addEventListener('load', mulaiAudio);
+    </script>
+</body>
+</html>
